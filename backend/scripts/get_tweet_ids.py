@@ -9,11 +9,11 @@ import datetime
 
 # edit these three variables
 user = 'meganamram'
-start = datetime.datetime(2015, 10, 1)  # year, month, day
+start = datetime.datetime(2016, 5, 1)  # year, month, day
 end = datetime.datetime(2019, 12, 20)  # year, month, day
 
 # only edit these if you're having problems
-delay = 1  # time to wait on each page load before reading the page
+delay = 2  # time to wait on each page load before reading the page
 driver = webdriver.Safari()  # options are Chrome() Firefox() Safari()
 
 
