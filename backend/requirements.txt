@@ -1,1 +1,2 @@
 twitterscraper==1.4.0
+Flask==1.1.1
