@@ -1,1 +1,1 @@
-web: gunicorn app:twtddtfbp.app
+web: gunicorn twtddtfbp.app:app
