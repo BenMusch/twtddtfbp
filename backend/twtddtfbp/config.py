@@ -5,6 +5,6 @@ class BaseConfig:
     DEBUG = os.environ.get('DEBUG', '') == 'True'
 
     SQLALCHEMY_DATABASE_URI = os.environ.get(
-            'DATABASE_URI', 
+            'DATABASE_URL', 
             'postgresql://localhost:5432/twtddtfbp_dev')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
