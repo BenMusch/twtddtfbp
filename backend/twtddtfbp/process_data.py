@@ -3,6 +3,7 @@ from itertools import islice
 import time
 
 from twtddtfbp.app import db
+from twtddtfbp import queries
 from twtddtfbp.models import Tweet
 from twtddtfbp.twitter import get_tweets_until_id, get_tweets_by_ids
 
@@ -23,6 +24,11 @@ def process_all_tweets():
     new_tweets = get_tweets_until_id(int(last_tweet.tweet_id))
     for tweet in new_tweets:
         process_single_tweet(tweet)
+
+    # cache all the queries
+    queries.all_sorted_by_date(True)
+    queries.top_by_retweets(True)
+    queries.top_by_likes(True)
 
 def process_tweets_by_ids(ids):
     chunked_ids = lists_for_twitter_api(ids)
