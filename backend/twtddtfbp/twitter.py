@@ -19,4 +19,5 @@ def get_tweets_by_ids(tweet_ids):
     return api.statuses_lookup(tweet_ids)
 
 def get_tweets_until_id(until_id):
-    return api.user_timeline(username, until_id)
+    # assume there will never be a 1000-tweet gap
+    return api.user_timeline(username, since_id=until_id, count=1000))

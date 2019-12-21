@@ -12,6 +12,18 @@ TOLERANCE = 10
 SLEEP = 5
 
 
+def process_all_tweets():
+    last_tweet = Tweet.query.order_by(Tweet.date.desc()).first()
+
+    all_ids = Tweet.query.with_entities(Tweet.id).all()
+    formatted_ids = [ int(field_tuple[0]) for field_tuple in all_ids ]
+    process_tweets_by_ids(formatted_ids)
+    time.sleep(SLEEP)
+
+    new_tweets = get_tweets_until_id(int(last_tweet.tweet_id))
+    for tweet in new_tweets:
+        process_single_tweet(tweet)
+
 def process_tweets_by_ids(ids):
     chunked_ids = lists_for_twitter_api(ids)
     for chunk in chunked_ids:
