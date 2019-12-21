@@ -20,4 +20,4 @@ def get_tweets_by_ids(tweet_ids):
 
 def get_tweets_until_id(until_id):
     # assume there will never be a 1000-tweet gap
-    return api.user_timeline(username, since_id=until_id, count=1000))
+    return api.user_timeline(username, since_id=until_id, count=1000)

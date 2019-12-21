@@ -15,7 +15,7 @@ SLEEP = 5
 def process_all_tweets():
     last_tweet = Tweet.query.order_by(Tweet.date.desc()).first()
 
-    all_ids = Tweet.query.with_entities(Tweet.id).all()
+    all_ids = Tweet.query.with_entities(Tweet.tweet_id).all()
     formatted_ids = [ int(field_tuple[0]) for field_tuple in all_ids ]
     process_tweets_by_ids(formatted_ids)
     time.sleep(SLEEP)
