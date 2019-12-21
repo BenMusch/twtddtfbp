@@ -16,7 +16,7 @@ app.config.from_object(BaseConfig)
 if app.config['ENVIRONMENT'] == 'development':
     cors = CORS(app, resources={r"*": {"origins": "*"}})
 else:
-    cors = CORS(app, resources={r"*": {"origins": "*.todaywasthedaydonaldtrumpfinallybecamepresident.com"}})
+    cors = CORS(app, resources={r"*": {"origins": "todaywasthedaydonaldtrumpfinallybecamepresident.com"}})
 
 
 db = SQLAlchemy(app)
