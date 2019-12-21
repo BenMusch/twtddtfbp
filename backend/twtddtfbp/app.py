@@ -10,7 +10,6 @@ app.config.from_object(BaseConfig)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-
 from twtddtfbp.models import *
 
 @app.route('/hello/', methods=['GET'])
