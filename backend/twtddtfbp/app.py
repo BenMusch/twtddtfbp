@@ -3,6 +3,7 @@ import atexit
 
 from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -11,6 +12,12 @@ from twtddtfbp.config import BaseConfig
 
 app = Flask(__name__)
 app.config.from_object(BaseConfig)
+
+if app.config['ENVIRONMENT'] == 'development':
+    cors = CORS(app, resources={r"*": {"origins": "*"}})
+else:
+    cors = CORS(app, resources={r"*": {"origins": "*.todaywasthedaydonaldtrumpfinallybecamepresident.com"}})
+
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
