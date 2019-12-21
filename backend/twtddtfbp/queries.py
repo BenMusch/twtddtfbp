@@ -1,6 +1,11 @@
+from twtddtfbp.app import ma
 from twtddtfbp import cache
 from twtddtfbp.models import Tweet
 
+class TweetSerializer(ma.Schema):
+    class Meta:
+        fields = ("id", "tweet_id", "date", "retweets", "likes")
+tweets_schema = TweetSerializer(many=True)
 
 def cached_query(f):
     """cache function results assuming there are no arguments"""
@@ -8,7 +13,7 @@ def cached_query(f):
         if not skip_cache and cache.has_key(f.__name__):
             return cache.get(f.__name__)
         print("Cache miss " + str(f.__name__))
-        result = f()
+        result = tweets_schema.dump(f())
         cache.set(f.__name__, result)
         return result
     return wrapper
